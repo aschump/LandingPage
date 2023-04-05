@@ -43,6 +43,7 @@ function addLink(navItem) {
     a.href = `#${navItem.id}`;
     navItem.appendChild(a);
     a.textContent = navItem.id;
+
 }
 
 
@@ -75,40 +76,47 @@ allSections.forEach((section) => {
     });
 });
 
-    /**
-     * End Main Functions
-     * Begin Events
-     *
-    */
+/**
+ * End Main Functions
+ * Begin Events
+ *
+*/
 
-    // Build menu
-
-    // Scroll to section on link click
-
-    // Set sections as active
-
-    //-------Highlight Active Section---------------
-    //create scroll event listener on window object
-    window.addEventListener('scroll', function () {
-        //iterate over allSections variable to access each section
-        allSections.forEach(function (section) {
-            //retrieve the section's position on page
-            const currentPos = section.getBoundingClientRect();
-            //use position to check if section is visible within viewport
-            const isVisible = currentPos.top > 0
-                && currentPos.left > 0
-                && currentPos.right <= window.innerWidth
-                && currentPos.bottom <= window.innerHeight;
-            //if so, add your-active-class to that section
-            if (isVisible) {
-                //use classList to add the class
-                section.classList.add('your-active-class');
-            }
-            //else, remove active class from the section
-            else {
-                //use classList to remove the class
-                section.classList.remove('your-active-class');
-            }
-        });
-
+//-------Highlight Active Section---------------
+//create scroll event listener on window object
+window.addEventListener('scroll', function () {
+    //iterate over allSections variable to access each section
+    allSections.forEach(function (section) {
+        //retrieve the section's position on page
+        const currentPos = section.getBoundingClientRect();
+        //use position to check if section is visible within viewport
+        const isVisible = currentPos.top > 0
+            && currentPos.left > 0
+            && currentPos.right <= window.innerWidth
+            && currentPos.bottom <= window.innerHeight;
+        //if so, add your-active-class to that section
+        if (isVisible) {
+            //use classList to add the class
+            section.classList.add('your-active-class');
+        }
+        //else, remove active class from the section
+        else {
+            //use classList to remove the class
+            section.classList.remove('your-active-class');
+        }
     });
+});
+//-------Highlight Active Nav On Click---------------
+//create on click highlight function
+const theseLinks = document.querySelectorAll('li a');
+theseLinks.forEach(link => {
+    link.addEventListener('click', function () {
+        //remove active class from all links
+        theseLinks.forEach(link => link.classList.remove('active'));
+        //add the active class to the current link
+        link.classList.add('active');
+    });
+});
+
+
+
