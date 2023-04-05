@@ -38,13 +38,13 @@ const allSections = document.querySelectorAll('section');
  * Start Helper Functions
  * 
 */
-function addLink(navItem) {
-    const a = document.createElement('a');
-    a.href = `#${navItem.id}`;
-    navItem.appendChild(a);
-    a.textContent = navItem.id;
-
-}
+//---no longer need this HM but want to keep it to optimize later---
+//function addLink(navItem) {
+//    const a = document.createElement('a');
+//    a.href = `#${navItem.id}`;
+//    navItem.appendChild(a);
+//    a.textContent = navItem.id;
+//}
 
 
 /**
@@ -62,20 +62,35 @@ allSections.forEach((section) => {
     const currentId = section.id;
     //set the id
     current.setAttribute("id", currentId);
+
+    //---no longer need this HM but want to keep it to optimize later---
     //Use Helper Method to add link to section
-    addLink(current);
+    //addLink(current);
+
+    //-------Feedback Changes Start ---------
+    const a = document.createElement('a');
+    a.href = `#${currentId}`;
+    current.append(a);
+
+    //access h2 tag of current section
+    const thisTitle = section.querySelector('h2');
+    //obtain textContent
+    const titleText = thisTitle.innerHTML;
+    //set a textContent to saved textContent
+    a.textContent = titleText;
+    //-------Feedback Changes End--------
+
     //set the class
     current.setAttribute("class", "menu__link");
     //append current li element to nav
     nav.appendChild(current);
 
-    ////add Onclick event listener
+    //add Onclick event listener
     current.addEventListener('click', function (event) {
         event.preventDefault();
         section.scrollIntoView({ behavior: "smooth" });
     });
 });
-
 /**
  * End Main Functions
  * Begin Events
@@ -90,7 +105,7 @@ window.addEventListener('scroll', function () {
         //retrieve the section's position on page
         const currentPos = section.getBoundingClientRect();
         //use position to check if section is visible within viewport
-        const isVisible = currentPos.top > 0
+        const isVisible = currentPos.top >= 0
             && currentPos.left > 0
             && currentPos.right <= window.innerWidth
             && currentPos.bottom <= window.innerHeight;
@@ -108,6 +123,7 @@ window.addEventListener('scroll', function () {
 });
 //-------Highlight Active Nav On Click---------------
 //create on click highlight function
+//query all links
 const theseLinks = document.querySelectorAll('li a');
 theseLinks.forEach(link => {
     link.addEventListener('click', function () {
