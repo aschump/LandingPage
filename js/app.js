@@ -45,6 +45,7 @@ function addLink(navItem) {
     a.textContent = navItem.id;
 }
 
+
 /**
  * End Helper Functions
  * Begin Main Functions
