@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\css",
+    "\\js"
   ],
-  "SelectedNode": "\\C:\\Udacity\\FEND\\4_LandingPage",
+  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }

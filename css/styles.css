@@ -58,6 +58,7 @@ main {
 section {
     position: relative;
     min-height: 80vh;
+    /*scroll-behavior: smooth;*/
 }
 
 
@@ -72,14 +73,16 @@ section {
 
 .navbar__menu li {
     display: inline-block;
+    color: darkred;
 }
 
 .navbar__menu .menu__link {
-    display: block;
+    display: inline;
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: #82d8e2;
+    /*scroll-behavior: smooth;*/
 }
 
 .navbar__menu .menu__link:hover {
